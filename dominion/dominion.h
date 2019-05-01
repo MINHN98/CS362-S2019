@@ -78,15 +78,6 @@ struct gameState {
 
 struct gameState* newGame();
 
-/*  
-* Refactored functions
-*/
-int smithyEffect(int handPos, int currentPlayer, struct gameState *state);
-int adventurerEffect(int currentPlayer, struct gameState *state);
-int villageEffect(int handPos, int currentPlayer, struct gameState *state);
-int greatHallEffect(int handPos, int currentPlayer, struct gameState *state);
-int councilRoomEffect(int handPos, int currentPlayer, struct gameState *state);
-
 int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
 		  int k8, int k9, int k10);
 
