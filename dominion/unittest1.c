@@ -5,6 +5,11 @@
 #include <assert.h>
 #include "rngs.h"
 
+/*
+*   smithyEffect Unit Test
+*
+*/
+
 int main(){
 
     int result;
@@ -28,7 +33,7 @@ int main(){
     // add smithy to hand
     printf("---Adding Smithy to hand...\n");
     result = gainCard(smithy, &G, 2, currentPlayer);
-    printf ("initializeGame(4, kingdomCards, 2, &G) = %d\n", result);
+    printf ("gainCard(smithy, &G, 2, currentPlayer); = %d\n", result);
     assert(result == 0); // assert no errors in gaining Smithy card
 
     printf("---Playing Smithy card...\n");
