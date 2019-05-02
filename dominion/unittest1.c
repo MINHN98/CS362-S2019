@@ -33,15 +33,18 @@ int main(){
     // add smithy to hand
     printf("---Adding Smithy to hand...\n");
     result = gainCard(smithy, &G, 2, currentPlayer);
-    printf ("gainCard(smithy, &G, 2, currentPlayer); = %d\n", result);
+    printf("gainCard(smithy, &G, 2, currentPlayer); = %d\n", result);
     assert(result == 0); // assert no errors in gaining Smithy card
 
     printf("---Playing Smithy card...\n");
-    // handPos = card played (in 5th spot in array), currentPlayer = 0
+    // handPos = card played (in 5th spot in array)
     result = smithyEffect(5, currentPlayer, &G);
-    printf ("smithyEffect(5, currentPlayer, &G) = %d\n", result);
+    printf("smithyEffect(5, currentPlayer, &G) = %d\n", result);
+    
+    printf("---Checking if player has 3 new cards in hand...\n");
     printf("Hand size after using Smithy card: %d\n", G.handCount[currentPlayer]);
     assert(G.handCount[currentPlayer] == 8); // check if the player has 3 new cards in hand
+    printf("Passed.\n");
 
     printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
 

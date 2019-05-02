@@ -39,9 +39,12 @@ int main(){
     printf("---Playing Adventurer card...\n");
     result = adventurerEffect(currentPlayer, &G);
     printf ("adventurerEffect(currentPlayer, &G) = %d\n", result);
-    printf("Hand size after using Adventurer card: %d\n", G.handCount[currentPlayer]);
+    
+    printf("---Checking if player has 2 new cards in hand...\n");
     int handCount = G.handCount[currentPlayer];
+    printf("Hand size after using Adventurer card: %d\n", G.handCount[currentPlayer]);
     assert(handCount == 8); // check if the player has 2 new cards in hand
+    printf("Passed.\n");
     
     //Check if the top two cards in hand are treasure cards
     if (handCount == 8){
@@ -56,5 +59,5 @@ int main(){
         printf("Passed.\n");
     }
     printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
-    
+
 }

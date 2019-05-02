@@ -686,7 +686,7 @@ int adventurerEffect(int currentPlayer, struct gameState *state){
 
 
 int villageEffect(int handPos, int currentPlayer, struct gameState *state){
-    //+1 Card
+  //+1 Card
   drawCard(currentPlayer, state);
   
   //+2 Actions
