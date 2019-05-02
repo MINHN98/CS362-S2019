@@ -74,7 +74,7 @@ unittestresults: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 car
 	-cardtest4 >> unittestresults.out 2>&1
 
 	echo -e "\n--------gcov of dominion.c:" >> unittestresults.out
-	-gcov dominion.c >> unittestresults.out
+	-gcov -f -b dominion.c >> unittestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)

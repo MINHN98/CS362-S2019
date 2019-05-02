@@ -41,7 +41,12 @@ int main(){
     // handPos = card played (in 5th spot in array)
     result = cardEffect(gardens, -1, -1, -1, &G, 5, &bonus);
     printf("cardEffect(gardens, -1, -1, -1, &G, 5, &bonus) = %d\n", result); 
-    assert(result == 0);
+    //assert(result == 0);
+    if(result == 0){
+        printf("Passed.\n");
+    }else{
+        printf("FAILED: Function did not return 0.\n");
+    }
 
-    printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
+    //printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
 }

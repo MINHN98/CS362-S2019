@@ -45,8 +45,13 @@ int main(){
 
     printf("---Checking if player has 3 new cards in hand...\n");
     printf("Hand size after using Smithy card: %d\n", G.handCount[currentPlayer]);
-    assert(G.handCount[currentPlayer] == 8); // check if the player has 3 new cards in hand
-    printf("Passed.\n");
+    //assert(G.handCount[currentPlayer] == 8); // check if the player has 3 new cards in hand
+    if (G.handCount[currentPlayer] == 8){
+        printf("Passed.\n");
+    }else{
+        printf("FAILED: Player does not have 3 new cards in hand.\n");
+    }
+    
 
-    printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
+    //printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
 }

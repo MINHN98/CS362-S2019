@@ -51,9 +51,13 @@ int main(){
 
     printf("---Checking if player has 4 new cards in hand...\n");
     printf("Hand size after using Council Room card: %d\n", G.handCount[currentPlayer]);
-    assert(G.handCount[currentPlayer] == 9); // check if the player has 4 new cards in hand
-    printf("Passed.\n");
+    //assert(G.handCount[currentPlayer] == 9); // check if the player has 4 new cards in hand
+    if(G.handCount[currentPlayer] == 9){
+        printf("Passed.\n");
+    }else{
+        printf("FAILLED: assert G.handCount[currentPlayer] == 9\n");
+    }
 
-    printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
+    //printf("-> SUCCESS: UNIT TESTS PASSED <-\n");
 
 }
