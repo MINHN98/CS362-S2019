@@ -31,7 +31,7 @@ int main(){
     printf("Hand size after initializeGame: %d\n", G.handCount[currentPlayer]);
     
     int initialNumActions = G.numActions;
-    printf("Starting number of actions: %d\n", G.numActions);
+    printf("Starting number of actions: %d\n", initialNumActions);
 
     // add smithy to hand
     printf("---Adding Great Hall to hand...\n");

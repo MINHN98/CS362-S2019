@@ -26,7 +26,7 @@ int main(){
     printf("***********************Running smithyEffect unit test...***********************\n");
     printf("---Initializing game...\n");
     result = initializeGame(numPlayers, kingdomCards, randomSeed, &G);
-    printf ("initializeGame(4, kingdomCards, 2, &G) = %d\n", result);
+    printf("initializeGame(4, kingdomCards, 2, &G) = %d\n", result);
     assert(result == 0); // assert no errors in creating the game
     printf("Hand size after initializeGame: %d\n", G.handCount[currentPlayer]);
     
