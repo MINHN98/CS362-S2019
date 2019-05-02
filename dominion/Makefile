@@ -1,4 +1,5 @@
 CFLAGS= -Wall -fpic -coverage -lm -std=c99
+CFLAGS2= -ftest-coverage -fprofile-arcs
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -30,7 +31,7 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 unittest1: unittest1.c dominion.o rngs.o
-	gcc -o unittest1 -g  unittest1.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest1 -g  unittest1.c dominion.o rngs.o $(CFLAGS2) $(CFLAGS) 
 
 unittest2: unittest2.c dominion.o rngs.o
 	gcc -o unittest2 -g  unittest2.c dominion.o rngs.o $(CFLAGS)
@@ -53,6 +54,28 @@ cardtest3: cardtest3.c dominion.o rngs.o
 cardtest4: cardtest4.c dominion.o rngs.o
 	gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
 
+unittestresults: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
+	echo -e "\n--------execution of unittest1.c:" >> unittestresults.out
+	-unittest1 >> unittestresults.out 2>&1
+	echo -e "\n--------execution of unittest2.c:" >> unittestresults.out
+	-unittest2 >> unittestresults.out 2>&1
+	echo -e "\n--------execution of unittest3.c:" >> unittestresults.out
+	-unittest3 >> unittestresults.out 2>&1
+	echo -e "\n--------execution of unittest4.c:" >> unittestresults.out
+	-unittest4 >> unittestresults.out 2>&1
+
+	echo -e "\n--------execution of cardtest1.c:" >> unittestresults.out
+	-cardtest1 >> unittestresults.out 2>&1
+	echo -e "\n--------execution of cardtest2.c:" >> unittestresults.out
+	-cardtest2 >> unittestresults.out 2>&1
+	echo -e "\n--------execution of cardtest3.c:" >> unittestresults.out
+	-cardtest3 >> unittestresults.out 2>&1
+	echo -e "\n--------execution of cardtest4.c:" >> unittestresults.out
+	-cardtest4 >> unittestresults.out 2>&1
+
+	echo -e "\n--------gcov of dominion.c:" >> unittestresults.out
+	-gcov dominion.c >> unittestresults.out
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
@@ -60,3 +83,4 @@ all: playdom player
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
