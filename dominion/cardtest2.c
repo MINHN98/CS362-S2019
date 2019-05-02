@@ -25,7 +25,7 @@ int main(){
     int currentPlayer = 0;    
     int bonus = 0;
     
-    printf("***********************Running smithyEffect unit test...***********************\n");
+    printf("***********************Running adventurer unit test...***********************\n");
     printf("---Initializing game...\n");
     result = initializeGame(numPlayers, kingdomCards, randomSeed, &G);
     printf("initializeGame(4, kingdomCards, 2, &G) = %d\n", result);
