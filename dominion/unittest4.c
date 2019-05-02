@@ -36,7 +36,7 @@ int main(){
     // add Council Room to hand
     printf("---Adding Council Room to hand...\n");
     result = gainCard(council_room, &G, 2, currentPlayer);
-    printf("gainCard(smithy, &G, 2, currentPlayer); = %d\n", result);
+    printf("gainCard(council_room, &G, 2, currentPlayer); = %d\n", result);
     assert(result == 0); // assert no errors in gaining Council Room card
 
     printf("---Playing Council Room card...\n");
