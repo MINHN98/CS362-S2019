@@ -5,7 +5,7 @@
 #include <assert.h>
 #include "rngs.h"
 /*
-*   Random test for SmithyEffect function
+*   Random test for smithyEffect function
 *   Function definition: 
 *   int smithyEffect(int handPos, int currentPlayer, struct gameState *state)
 *
@@ -22,7 +22,7 @@ int main () {
     int n, i, p, result;
     SelectStream(2);
     PutSeed(4);
-    printf ("*****RUNNING RANDOM TESTS...*****\n");
+    printf ("*****RUNNING smithyEffect() RANDOM TESTS...*****\n");
 
     for (n = 0; n < 2000; n++) {
         printf ("---Test %d:\n", n+1);
@@ -33,7 +33,6 @@ int main () {
 
         // Random player
         p = floor(Random() * 4);
-        printf ("PLAYER NUMBER: %d\n", p);
 
         // Random deck
         G.deckCount[p] = floor(Random() * MAX_DECK);
@@ -83,6 +82,8 @@ int main () {
 
 int testSmithyEffect(int handPos, int p, struct gameState *post){
     printf("TESTING SMITHY EFFECT...\n");
+    printf ("PLAYER NUMBER: %d\n", p);
+
     struct gameState pre;
     memcpy (&pre, post, sizeof(struct gameState));
 
