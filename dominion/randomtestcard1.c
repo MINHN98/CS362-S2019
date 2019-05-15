@@ -5,15 +5,15 @@
 #include <assert.h>
 #include "rngs.h"
 /*
-*   Random test for adventurerEffect function
+*   Random test for smithyEffect function
 *   Function definition: 
-*   int adventurerEffect(int currentPlayer, struct gameState *state)
+*   int smithyEffect(int handPos, int currentPlayer, struct gameState *state)
 *
 */
-int testAdventurerEffect(int p, struct gameState *post);
+
+int testSmithyEffect(int handPos, int p, struct gameState *post);
 
 int main () {
-
     int k[10] = {adventurer, council_room, feast, gardens, mine,
 	       remodel, smithy, village, baron, great_hall};
 
@@ -22,7 +22,7 @@ int main () {
     int n, i, p, result;
     SelectStream(2);
     PutSeed(4);
-    printf ("*****RUNNING adventurerEffect() RANDOM TESTS...*****\n");
+    printf ("*****RUNNING smithyEffect() RANDOM TESTS...*****\n");
 
     for (n = 0; n < 2000; n++) {
         printf ("---Test %d:\n", n+1);
@@ -55,13 +55,23 @@ int main () {
             G.hand[p][i] = randCard;
         }
 
-        G.supplyCount[adventurer] = (rand() % (50 - 1 + 1)) + 1;
+        // Random played card count
+        G.playedCardCount = floor(Random() * MAX_HAND);
+        for(i = 0; i < G.playedCardCount; i++){
+            int randCard = (rand() % (26 - 0 + 1)) + 0; 
+            G.playedCards[i] = randCard;
+        }
+
+        // Random smithy supply
+        G.supplyCount[smithy] = (rand() % (50 - 1 + 1)) + 1;
 
         // Gain card we are testing
-        gainCard(adventurer, &G, 2, p);
-
+        result = gainCard(smithy, &G, 2, p);
+        assert(result == 0);
+        
         // Run test function
-        testAdventurerEffect(p, &G);
+        int handPos = G.handCount[p]-1;
+        testSmithyEffect(handPos, p, &G);
 
         printf("\n");
     }
@@ -70,8 +80,8 @@ int main () {
 }
 
 
-int testAdventurerEffect(int p, struct gameState *post){
-    printf("TESTING ADVENTURER EFFECT...\n");
+int testSmithyEffect(int handPos, int p, struct gameState *post){
+    printf("TESTING SMITHY EFFECT...\n");
     printf ("PLAYER NUMBER: %d\n", p);
 
     struct gameState pre;
@@ -82,16 +92,16 @@ int testAdventurerEffect(int p, struct gameState *post){
     int initial_handsize = pre.handCount[p];
     printf("Initial Handsize: %d\n", initial_handsize);
 
-    result = adventurerEffect(p, post);
+    result = smithyEffect(handPos, p, post);
     assert(result == 0);
 
     int final_handsize = post->handCount[p];
     printf("Final Handsize: %d\n", final_handsize);
 
     //assert(final_handsize == (initial_handsize+2));
-    if (final_handsize == (initial_handsize+2)){
+    if (final_handsize == (initial_handsize+2)) {
         printf("PASSED.\n");
-    }else{
+    } else {
         printf("FAILED.\n");
     }
 
