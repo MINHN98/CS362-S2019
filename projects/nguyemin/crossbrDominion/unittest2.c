@@ -6,8 +6,8 @@
 #include "rngs.h"
 
 /*
-*   adventurerEffect Unit Test
-*
+*   playAdventurer Unit Test
+*   int playAdventurer(struct gameState *state, int drawntreasure, int currentPlayer, int cardDrawn, int z, int temphand[MAX_HAND])
 */
 
 int main(){
@@ -23,7 +23,7 @@ int main(){
 
     int currentPlayer = 0;    
     
-    printf("***********************Running adventurerEffect unit test...***********************\n");
+    printf("***********************Running playAdventurer unit test...***********************\n");
     printf("---Initializing game...\n");
     result = initializeGame(numPlayers, kingdomCards, randomSeed, &G);
     printf ("initializeGame(4, kingdomCards, 2, &G) = %d\n", result);
@@ -37,8 +37,9 @@ int main(){
     assert(result == 0); // assert no errors in gaining Adventurer card
 
     printf("---Playing Adventurer card...\n");
-    result = adventurerEffect(currentPlayer, &G);
-    printf ("adventurerEffect(currentPlayer, &G) = %d\n", result);
+    int temphand[500];
+    result = playAdventurer(&G, 0, currentPlayer, 0, 0, temphand);
+    printf ("playAdventurer(&G, 0, currentPlayer, 0, 0, temphand) = %d\n", result);
     
     printf("---Checking if player has 2 new cards in hand...\n");
     int handCount = G.handCount[currentPlayer];

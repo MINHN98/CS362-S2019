@@ -6,8 +6,8 @@
 #include "rngs.h"
 
 /*
-*   smithyEffect Unit Test
-*
+*   playSmithy Unit Test
+*   int playSmithy(struct gameState *state, int handPos, int i, int currentPlayer)
 */
 
 int main(){
@@ -23,7 +23,7 @@ int main(){
 
     int currentPlayer = 0;    
     
-    printf("***********************Running smithyEffect unit test...***********************\n");
+    printf("***********************Running playSmithy unit test...***********************\n");
     printf("---Initializing game...\n");
     result = initializeGame(numPlayers, kingdomCards, randomSeed, &G);
     printf("initializeGame(4, kingdomCards, 2, &G) = %d\n", result);
@@ -38,7 +38,7 @@ int main(){
 
     printf("---Playing Smithy card...\n");
     // handPos = card played (in 5th spot in array)
-    result = smithyEffect(5, currentPlayer, &G);
+    result = playSmithy(&G, 5, 0, currentPlayer);
     printf("smithyEffect(5, currentPlayer, &G) = %d\n", result);
     
     printf("---Checking if player has 3 new cards in hand...\n");

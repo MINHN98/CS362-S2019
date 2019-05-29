@@ -31,7 +31,7 @@ runtests: testDrawCard
 	./testDrawCard &> unittestresult.out
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
-	
+
 unittest1: unittest1.c dominion.o rngs.o
 	gcc -o unittest1 -g  unittest1.c dominion.o rngs.o $(CFLAGS2) $(CFLAGS) 
 
@@ -56,13 +56,13 @@ cardtest3: cardtest3.c dominion.o rngs.o
 cardtest4: cardtest4.c dominion.o rngs.o
 	gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
 
-unittestresults: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
+unittestresults: unittest1 unittest2 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
 	echo -e "\n--------execution of unittest1.c:" >> unittestresults.out
 	-unittest1 >> unittestresults.out 2>&1
 	echo -e "\n--------execution of unittest2.c:" >> unittestresults.out
 	-unittest2 >> unittestresults.out 2>&1
-	echo -e "\n--------execution of unittest3.c:" >> unittestresults.out
-	-unittest3 >> unittestresults.out 2>&1
+	#echo -e "\n--------execution of unittest3.c:" >> unittestresults.out
+	#-unittest3 >> unittestresults.out 2>&1
 	echo -e "\n--------execution of unittest4.c:" >> unittestresults.out
 	-unittest4 >> unittestresults.out 2>&1
 

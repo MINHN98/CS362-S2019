@@ -5,12 +5,12 @@
 #include <assert.h>
 #include "rngs.h"
 /*
-*   Random test for adventurerEffect function
+*   Random test for playAdventurer function
 *   Function definition: 
-*   int adventurerEffect(int currentPlayer, struct gameState *state)
+*   int playAdventurer(struct gameState *state, int drawntreasure, int currentPlayer, int cardDrawn, int z, int temphand[MAX_HAND])
 *
 */
-int testAdventurerEffect(int p, struct gameState *post);
+int testPlayAdventurer(int p, struct gameState *post);
 
 int main () {
 
@@ -22,7 +22,7 @@ int main () {
     int n, i, p, result;
     SelectStream(2);
     PutSeed(4);
-    printf ("*****RUNNING adventurerEffect() RANDOM TESTS...*****\n");
+    printf ("*****RUNNING playAdventurer() RANDOM TESTS...*****\n");
 
     for (n = 0; n < 2000; n++) {
         printf ("---Test %d:\n", n+1);
@@ -61,7 +61,7 @@ int main () {
         gainCard(adventurer, &G, 2, p);
 
         // Run test function
-        testAdventurerEffect(p, &G);
+        testPlayAdventurer(p, &G);
 
         printf("\n");
     }
@@ -70,8 +70,8 @@ int main () {
 }
 
 
-int testAdventurerEffect(int p, struct gameState *post){
-    printf("TESTING ADVENTURER EFFECT...\n");
+int testPlayAdventurer(int p, struct gameState *post){
+    printf("TESTING PLAY ADVENTURER...\n");
     printf ("PLAYER NUMBER: %d\n", p);
 
     struct gameState pre;
@@ -81,8 +81,9 @@ int testAdventurerEffect(int p, struct gameState *post){
 
     int initial_handsize = pre.handCount[p];
     printf("Initial Handsize: %d\n", initial_handsize);
-
-    result = adventurerEffect(p, post);
+    //
+    int temphand[500];
+    result = playAdventurer(post, 0, p, 0, 0, temphand);
     assert(result == 0);
 
     int final_handsize = post->handCount[p];

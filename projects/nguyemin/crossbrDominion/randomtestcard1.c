@@ -5,13 +5,13 @@
 #include <assert.h>
 #include "rngs.h"
 /*
-*   Random test for smithyEffect function
+*   Random test for playSmithy function
 *   Function definition: 
-*   int smithyEffect(int handPos, int currentPlayer, struct gameState *state)
+*   int playSmithy(struct gameState *state, int handPos, int i, int currentPlayer)
 *
 */
 
-int testSmithyEffect(int handPos, int p, struct gameState *post);
+int testPlaySmithy(int handPos, int p, struct gameState *post);
 
 int main () {
     int k[10] = {adventurer, council_room, feast, gardens, mine,
@@ -22,7 +22,7 @@ int main () {
     int n, i, p, result;
     SelectStream(2);
     PutSeed(4);
-    printf ("*****RUNNING smithyEffect() RANDOM TESTS...*****\n");
+    printf ("*****RUNNING playSmithy() RANDOM TESTS...*****\n");
 
     for (n = 0; n < 2000; n++) {
         printf ("---Test %d:\n", n+1);
@@ -71,7 +71,7 @@ int main () {
         
         // Run test function
         int handPos = G.handCount[p]-1;
-        testSmithyEffect(handPos, p, &G);
+        testPlaySmithy(handPos, p, &G);
 
         printf("\n");
     }
@@ -80,8 +80,8 @@ int main () {
 }
 
 
-int testSmithyEffect(int handPos, int p, struct gameState *post){
-    printf("TESTING SMITHY EFFECT...\n");
+int testPlaySmithy(int handPos, int p, struct gameState *post){
+    printf("TESTING PLAY SMITHY...\n");
     printf ("PLAYER NUMBER: %d\n", p);
 
     struct gameState pre;
@@ -92,7 +92,7 @@ int testSmithyEffect(int handPos, int p, struct gameState *post){
     int initial_handsize = pre.handCount[p];
     printf("Initial Handsize: %d\n", initial_handsize);
 
-    result = smithyEffect(handPos, p, post);
+    result = playSmithy(post, handPos, 0, p);
     assert(result == 0);
 
     int final_handsize = post->handCount[p];

@@ -5,13 +5,13 @@
 #include <assert.h>
 #include "rngs.h"
 /*
-*   Random test for villageEffect function
+*   Random test for playVillage function
 *   Function definition: 
-*   int villageEffect(int handPos, int currentPlayer, struct gameState *state)
+*   int playVillage(struct gameState *state, int handPos, int currentPlayer)
 *
 */
 
-int testVillageEffect(int handPos, int p, struct gameState *post);
+int testPlayVillage(int handPos, int p, struct gameState *post);
 
 int main () {
     int k[10] = {adventurer, council_room, feast, gardens, mine,
@@ -22,7 +22,7 @@ int main () {
     int n, i, p, result;
     SelectStream(2);
     PutSeed(4);
-    printf ("*****RUNNING villageEffect() RANDOM TESTS...*****\n");
+    printf ("*****RUNNING playVillage() RANDOM TESTS...*****\n");
 
     for (n = 0; n < 2000; n++) {
         printf ("---Test %d:\n", n+1);
@@ -74,7 +74,7 @@ int main () {
         
         // Run test function
         int handPos = G.handCount[p]-1;
-        testVillageEffect(handPos, p, &G);
+        testPlayVillage(handPos, p, &G);
 
         printf("\n");
     }
@@ -83,8 +83,8 @@ int main () {
 }
 
 
-int testVillageEffect(int handPos, int p, struct gameState *post){
-    printf("TESTING VILLAGE EFFECT...\n");
+int testPlayVillage(int handPos, int p, struct gameState *post){
+    printf("TESTING PLAY VILLAGE...\n");
     printf ("PLAYER NUMBER: %d\n", p);
     
     struct gameState pre;
@@ -96,7 +96,7 @@ int testVillageEffect(int handPos, int p, struct gameState *post){
     int initial_handsize = pre.handCount[p];
     int initial_actions = pre.numActions;
 
-    result = villageEffect(handPos, p, post);
+    result = playVillage(post, handPos, p);
     assert(result == 0);
 
     // get final values

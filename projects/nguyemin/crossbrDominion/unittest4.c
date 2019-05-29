@@ -6,8 +6,8 @@
 #include "rngs.h"
 
 /*
-*   councilRoomEffect Unit Test
-*
+*   playCouncilRoom Unit Test
+*   int playCouncilRoom(struct gameState *state, int handPos, int i, int currentPlayer)
 */
 
 int main(){
@@ -23,7 +23,7 @@ int main(){
 
     int currentPlayer = 0;    
     
-    printf("***********************Running councilRoomEffect unit test...***********************\n");
+    printf("***********************Running playCouncilRoom unit test...***********************\n");
     printf("---Initializing game...\n");
     result = initializeGame(numPlayers, kingdomCards, randomSeed, &G);
     printf("initializeGame(4, kingdomCards, 2, &G) = %d\n", result);
@@ -41,8 +41,9 @@ int main(){
 
     printf("---Playing Council Room card...\n");
     // handPos = card played (in 5th spot in array)
-    result = councilRoomEffect(5, currentPlayer, &G);
-    printf("councilRoomEffect(5, currentPlayer, &G) = %d\n", result);
+    result = playCouncilRoom(&G, 5, 0, currentPlayer);
+    
+    printf("playCouncilRoom(&G, 5, 0, currentPlayer) = %d\n", result);
 
     printf("---Checking if player one more number of buys...\n");
     printf("Final number of buys: %d\n", G.numBuys);
