@@ -39,7 +39,7 @@ int main(){
     printf("---Playing Smithy card...\n");
     // handPos = card played (in 5th spot in array)
     result = playSmithy(&G, 5, 0, currentPlayer);
-    printf("smithyEffect(5, currentPlayer, &G) = %d\n", result);
+    printf("playSmithy(&G, 5, 0, currentPlayer) = %d\n", result);
     
     printf("---Checking if player has 3 new cards in hand...\n");
     printf("Hand size after using Smithy card: %d\n", G.handCount[currentPlayer]);
