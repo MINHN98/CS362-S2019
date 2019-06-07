@@ -1,0 +1,11 @@
+true http://www.google.com/test1
+true ftp://go.com:80/t123
+true h3t://255.255.255.255:65535?action=view
+true http://go.cc/test1/file
+true ftp://go.com
+true https://www.geeksforgeeks.org/compare-two-strings-in-java/
+false ://255.com:65636/..//file
+false 3ht://256.256.256.256:999999999999999999/$23?action=edit&mode=up
+false http:/go.a
+false http/www.google.com./..?action=view
+false http://.1.2.3.4:-1/test1?action=edit&mode=up
